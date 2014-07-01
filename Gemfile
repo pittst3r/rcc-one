@@ -20,7 +20,8 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
   gem 'poltergeist'
   gem 'rspec-rails'
 end

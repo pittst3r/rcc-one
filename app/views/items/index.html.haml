@@ -1,3 +1,5 @@
-= form_for Item.new do |f|
-  = f.label :content
-  = f.text_field :content
+%script{ type: 'text/x-handlebars', data: { template_name: 'items' } }
+  %ul
+    {{#each}}
+    %li {{content}}
+    {{/each}}

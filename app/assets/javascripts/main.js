@@ -10,4 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require_tree .
+
+//= require jquery/dist/jquery
+//= require handlebars/handlebars
+//= require ember/ember
+//= require ember-data/ember-data
+//= require app
