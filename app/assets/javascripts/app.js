@@ -1,3 +1,5 @@
 //= require app/application
-//= require_directory ./app/models
 //= require app/router
+//= require_directory ./app/models
+//= require_directory ./app/controllers
+//= require_directory ./app/views
