@@ -1,9 +1,8 @@
-# Workflowy Clone Project for River City Code Club
+# Richmond Computer Club Project \#1
 
 ## Prerequisites
 
 - ruby
 - node.js
-- npm
 - bower
 - phantomjs
