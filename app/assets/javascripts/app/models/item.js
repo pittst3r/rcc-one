@@ -1,3 +1,5 @@
 App.Item = DS.Model.extend({
-  content: DS.attr('string')
+  description: DS.attr('string'),
+  ordinal: DS.attr('number'),
+  completed: DS.attr('boolean')
 });

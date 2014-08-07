@@ -1,21 +1,14 @@
 App.ItemsController = Ember.ArrayController.extend({
+  needs: 'item',
+  itemController: 'item',
+  sortProperties: ['ordinal'],
+  sortAscending: true,
   actions: {
-    newItem: function() {
-      var item = this.store.createRecord('item', {
-        content: ''
+    new: function() {
+      var newItem = this.store.createRecord('item', {
+        description: '',
+        ordinal: 0
       });
-      item.save();
-      item.$().focus();
-    },
-    createItem: function() {
-      var content = this.get('newContent');
-      if (!Ember.isEmpty(content)) {
-        var item = this.store.createRecord('item', {
-          content: content
-        });
-        this.set('newContent', '');
-        item.save();
-      }
     }
   }
 });

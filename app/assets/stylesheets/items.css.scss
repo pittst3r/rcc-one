@@ -13,7 +13,7 @@ body {
 ul {
   width: 40%;
   margin: 0 auto 2em;
-  padding: 2em 2em 2em 3em;
+  padding: 2em;
   background: white;
   list-style: none;
   border-radius: 0 0 .2em .2em;
@@ -22,6 +22,13 @@ ul {
     position: relative;
     margin: .5em 0;
     padding: 0;
+
+    &.completed {
+
+      input[type="text"] {
+        text-decoration: line-through;
+      }
+    }
   }
 }
 
@@ -31,7 +38,6 @@ ul {
   width: .5em;
   height: .5em;
   top: .5em;
-  left: -1em;
   background: black;
   border-radius: 50%;
 }
@@ -39,10 +45,10 @@ ul {
 ul.item-menu {
   display: block;
   position: absolute;
-  width: 15%;
+  width: 20%;
   top: 0;
-  right: 101%;
-  margin: 0;
+  right: 100%;
+  margin: 0 -.75em 0 0;
   padding: 0 1.25em 0 0;
   background: #ccc;
   border-radius: .2em;
@@ -79,7 +85,7 @@ ul.item-menu {
 
 input[type="text"] {
   width: 100%;
-  margin: 0;
+  margin: 0 0 0 1em;
   padding: 0;
   font-family: $font-family;
   font-size: 1em;
@@ -87,5 +93,6 @@ input[type="text"] {
   letter-spacing: $letter-spacing;
   outline: none;
   border: none;
+  background: transparent;
   -webkit-appearance: none;
 }

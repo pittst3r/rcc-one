@@ -1,18 +1,14 @@
-<script type='text/x-handlebars' data-template-name='items'>
-  <ul>
-    {{#each itemController="item"}}
-      {{#view App.ItemView}}
-        <li>
-          <span class="item-control"></span>
-          {{edit-item value=model.content focus-out='updateItem' insert-newline='newItem'}}
-          <ul {{bind-attr class=":item-menu isClosed:closed"}}>
-            <li><button {{action "deleteItem"}}>Delete</button></li>
-          </ul>
-        </li>
-      {{/view}}
-    {{/each}}
-    <li>
-      {{new-item value=newContent insert-newline="createItem"}}
-    </li>
+<script type="text/x-handlebars" data-template-name="item">
+  <span class="item-control"></span>
+  {{edit-item value=description focus-out='update' insert-newline='new'}}
+  <ul {{bind-attr class=':item-menu isClosed:closed'}}>
+    <li><button {{action 'complete'}}>{{completeButtonText}}</button></li>
+    <li><button {{action 'delete'}}>Delete</button></li>
   </ul>
+</script>
+
+<script type="text/x-handlebars" data-template-name="items">
+  {{#each}}
+    {{view App.ItemView classBinding="completed"}}
+  {{/each}}
 </script>

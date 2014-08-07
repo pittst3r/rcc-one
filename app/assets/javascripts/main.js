@@ -12,6 +12,7 @@
 //
 
 //= require jquery/dist/jquery
+//= require jqueryui/jquery-ui.js
 //= require handlebars/handlebars
 //= require ember/ember
 //= require ember-data/ember-data

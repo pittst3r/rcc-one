@@ -1,24 +1,44 @@
 App.ItemController = Ember.ObjectController.extend({
   actions: {
-    deleteItem: function() {
-      var item = this.get('model');
+    new: function() {
+      var newItem = this.store.createRecord('item', {
+        description: '',
+        ordinal: (this.get('ordinal') + 1)
+      });
+      newItem.save();
+    },
+    delete: function() {
+      var item = this.get('model'),
+          orig = this;
       item.deleteRecord();
+      item.save().then(function () {
+        if (Ember.isEmpty(orig.get('parentController'))) {
+          orig.store.createRecord('item', {
+            description: '',
+            ordinal: 0
+          });
+        }
+      });
+    },
+    complete: function() {
+      var item = this.get('model');
+      item.set('completed', !item.get('completed'));
       item.save();
     },
-    editItem: function() {
-      this.set('isEditing', true);
-    },
-    updateItem: function() {
-      this.set('isEditing', false);
-
-      if (Ember.isEmpty(this.get('model.content'))) {
-        this.send('deleteItem');
+    update: function() {
+      if (Ember.isEmpty(this.get('description'))) {
+        this.send('delete');
       } else {
         this.get('model').save();
       }
-
-      this.$().blur();
     }
   },
-  isClosed: true
+  isClosed: true,
+  completeButtonText: function() {
+    if (this.get('model.completed')) {
+      return 'Uncomplete';
+    } else {
+      return 'Complete';
+    }
+  }.property('completed')
 });
