@@ -1,20 +1,18 @@
 # Week 1
 
-To browse the resultant code of this week, see the [`week_1` tag](https://github.com/sweatypitts/workflowy_clone_project/tree/week_1)
+To browse the resultant code of this week, see the [`week_1` branch](https://github.com/sweatypitts/richmond-computer-club-project-1/tree/week_1)
 
 ## Create app
 
 ```shell
-rails new workflowy_clone_project --skip-javascript --skip-test-unit
-cd workflowy_clone_project
+rails new richmond-computer-club-project-1 --skip-javascript --skip-test-unit
+cd richmond-computer-club-project-1
 rake db:migrate # in order to create schema.rb, required for loading app
 rvm current
 atom
 ```
 
 Open up `.gitignore` and add `.DS_Store` to the end if you're on a Mac.
-
-Also add `/vendor/assets/lib` no matter which platform. You'll see why later.
 
 ## Update Gemfile
 
@@ -34,10 +32,6 @@ gem 'haml-rails'
 gem 'sass-rails'
 
 gem 'therubyracer', platforms: :ruby
-
-gem 'jbuilder'
-
-gem 'debugger'
 
 group :test do
   gem 'capybara'
@@ -112,6 +106,20 @@ Cucumber adds itself to the default rake task, so we should now be able to run `
 rake
 ```
 
+We also need to need to set up Cucumber to use `factory_girl` and tell it how to run javascript, which it will not do by default. In `features/support/env.rb` add the following requires to the top:
+
+```ruby
+require 'factory_girl'
+require 'capybara/poltergeist'
+```
+
+And add the following to the bottom of the file:
+
+```ruby
+World(FactoryGirl::Syntax::Methods)
+Capybara.javascript_driver = :poltergeist
+```
+
 ## Write our first cuke
 
 Add `features/user_views_items.feature` file, open it.
@@ -170,7 +178,7 @@ end
 
 Then(/^I should see my items?$/) do
   @items.each do |i|
-    expect(page).to have_content(i.content)
+    has_selector? "input[value='#{i}']"
   end
 end
 ```
@@ -201,7 +209,12 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    respond_to do |format|
+      format.html
+      format.json { render json: { items: @items } }
+    end
   end
+
 end
 ```
 
@@ -212,20 +225,20 @@ Make the view look like this:
 ```haml
 %ul
   - @items.each do |i|
-    %li= i.content
+    %li= i.description
 ```
 
 Observe `Item.all` in the controller. The `Item` object does not exist yet. It should be a model, but we haven't made it. Because of this, we know the test will definitely fail. We need to add some more stuff to make our second step pass. In your terminal do the following:
 
 ```shell
-rails g model item content:string
+rails g model item description:string
 ```
 
-If you've set up Rails as described above, this should only generate two files: the model file and the migration file. Let's run the migration now.
+If you've set up Rails as described above, this should only generate two files: the model file and the migration file. Let's run the migration and create an item now.
 
 ```shell
 rake db:migrate
-rails runner "Item.create(content: 'asdf')"
+rails runner "Item.create(description: 'asdf')"
 ```
 
 Now we need to fill in the step def for entering text in the form field. We're going to boot up the development rails server to take a peek at the ids on the form and field we're trying to fill in. Run the following in your terminal:
@@ -252,7 +265,7 @@ Make a new file in the root directory of the project named `.bowerrc` and make i
 }
 ```
 
-What this does is save packages managed by bower in the defined directory rather than `./bower_components`, the default. This directory does not need to be checked into source control since they will be defined in `bower.json`. This is why we added this directory to the `.gitignore` earlier.
+What this does is save packages managed by bower in the defined directory rather than `./bower_components`, the default.
 
 Now run the following commands:
 
@@ -262,23 +275,23 @@ bower install ember#1.6.0-beta.5 --save
 bower install ember-data#1.0.0-beta.8 --save
 ```
 
-Create the following directory: `app/assets/javascripts/app` and create a file called `application.js` in it, with the following contents:
+Create the directory `app/assets/javascripts/app` and create a file called `application.js` in it with the following contents:
 
 ```javascript
-window.App = Ember.Application.create();
+App = Ember.Application.create();
 
 App.ApplicationStore = DS.Store.extend({
   adapter: DS.ActiveModelAdapter
 });
 ```
 
-This creates our Ember app and tells it what kind of data store to use. We're using the conventional `RESTAdapter`.
+This creates our Ember app and tells it what kind of data store adapter to use.
 
 Create our Ember model in `app/assets/javascripts/app/models/item.js`:
 
 ```javascript
 App.Item = DS.Model.extend({
-  content: DS.attr('string')
+  description: DS.attr('string')
 });
 ```
 
@@ -300,7 +313,7 @@ App.ItemsRoute = Ember.Route.extend({
 
 Observe the variations on the word 'item' throughout the above files. If we follow convention, Ember makes it all work automagically.
 
-This won't work yet though. We need to hook it all up now.
+This won't work yet though if we don't include the scripts on our page.
 
 Rename `app/assets/javascripts/application.js` to `app/assets/javascripts/main.js` and make it look like this:
 
@@ -328,7 +341,7 @@ Because we've included these files in this way, we only need to require one file
 !!!
 %html
   %head
-    %title Workflowy Clone Project
+    %title Richmond Computer Club
     = stylesheet_link_tag 'application', media: "all"
     = javascript_include_tag 'main'
     = csrf_meta_tags
@@ -338,13 +351,13 @@ Because we've included these files in this way, we only need to require one file
 
 Notice how we're requiring the `main.js` file.
 
-One last thing... our `app/views/items/index.html.haml` template needs to be modified to play with Ember:
+One last thing... our `app/views/items/index.html.haml` template needs to be modified to use with Ember:
 
 ```haml
 %script{ type: 'text/x-handlebars', data: { template_name: 'items' } }
   %ul
     {{#each}}
-    %li {{content}}
+    %li {{description}}
     {{/each}}
 ```
 
