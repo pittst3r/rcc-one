@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 
+echo "Setting up git with: $1 <$2>"
+
 # Install some prerequisites
 sudo apt-get -y update
 sudo apt-get -y install git autoconf bison build-essential libssl-dev libyaml-dev libreadline6 libreadline6-dev zlib1g zlib1g-dev libsqlite3-dev curl libfontconfig libfreetype6 libfreetype6-dev
+
+# Set name and password for git
+git config --system user.name "$1"
+git config --system user.email $2
 
 # Install ruby
 curl -OLsS http://cache.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
