@@ -31,9 +31,16 @@ And again with git. [Downloads](http://git-scm.com/downloads).
 
 Now that we have the requisite software, we can get the project's source code which includes the Vagrant files that specify how to build our virtual machine.
 
+The first thing we should do is to let git know what our name and email address are. Git will use this information to identify us when we make commits. Also, Vagrant will use this information that we set to build our virtual machine later. In your terminal type the following commands, exactly as you see them, but replace my name and email address with yours.
+
+```shell
+git config --global user.name "Robbie Pitts"
+git config --global user.email robbie@sweatypitts.com
+```
+
 I like to keep all my local repositories in a directory called `repos` in my home directory. You don't have to do this, but I recommend deciding on a way to organize the repos that you will accumulate over time. If you want to organize things the way I do, create your `repos` directory now.
 
-Now open up your terminal and `cd` to the directory where you are keeping your repos. If you are doing things like me your command will look like this:
+In your terminal `cd` to the directory where you are keeping your repos. If you are doing things like me your command will look like this:
 
 ```shell
 cd ~/repos
@@ -111,6 +118,12 @@ bundle install
 ```
 
 It's a good idea to run `bundle install` when you first clone a new project, which is what we've done. You would also run it if you added a new gem to the Gemfile.
+
+We also need to install our javascript dependencies. We'll use bower to do that. Bower is written using nodejs, a javascript runtime. Run the following command:
+
+```shell
+bower install
+```
 
 Right now we're in the `master` branch of the repo, which, by convention, is usually the latest version of a project. However, that's not where we want to be if we're trying to build this ourselves. If you're starting from the beginning and want a clean slate, checkout the `week_0` branch and create a new branch from that branch. You can call it `wip` or whatever makes sense to you. It will be the branch you'll be working on this project in. If you're starting from a different week, say week 2, checkout the week 1 branch and branch off of that rather than the week 0 branch. Run the following commands in your terminal to do what I've been talking about:
 
