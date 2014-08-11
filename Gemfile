@@ -21,5 +21,6 @@ group :test do
   gem 'factory_girl_rails'
   gem 'ffaker'
   gem 'poltergeist'
+  gem 'phantomjs', '1.8.1'
   gem 'rspec-rails'
 end

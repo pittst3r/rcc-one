@@ -112,6 +112,12 @@ bundle install
 
 It's a good idea to run `bundle install` when you first clone a new project, which is what we've done. You would also run it if you added a new gem to the Gemfile.
 
+We also need to install our javascript dependencies. We'll use bower to do that. Bower is written using nodejs, a javascript runtime. Run the following command:
+
+```shell
+bower install
+```
+
 Right now we're in the `master` branch of the repo, which, by convention, is usually the latest version of a project. However, that's not where we want to be if we're trying to build this ourselves. If you're starting from the beginning and want a clean slate, checkout the `week_0` branch and create a new branch from that branch. You can call it `wip` or whatever makes sense to you. It will be the branch you'll be working on this project in. If you're starting from a different week, say week 2, checkout the week 1 branch and branch off of that rather than the week 0 branch. Run the following commands in your terminal to do what I've been talking about:
 
 ```shell
