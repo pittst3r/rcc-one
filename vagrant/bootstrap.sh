@@ -45,3 +45,6 @@ sudo npm install -g bower
 
 # Allow pretty bash colors
 echo "export TERM=xterm-256color" >> /home/vagrant/.bashrc
+
+# And pretty git colors
+git config --system color.ui true
