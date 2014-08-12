@@ -1,10 +1,10 @@
 # Week 1
 
-To browse the resultant code of this week, see the [`week_1` branch](https://github.com/sweatypitts/richmond-computer-club-project-1/tree/week_1)
+To browse the resultant code of this week, see the [`week_1` branch](https://github.com/sweatypitts/rcc-one/tree/week_1)
 
 ## Create app
 
-Before proceeding, be sure to have your environment in the state you are brought to by the end of the README.
+Before proceeding, be sure to have your environment in the state you are brought to by the end of the README. This means you have already cloned this repo onto your computer and you are currently inside the repo's directory.
 
 ```shell
 rails new ./ --skip-javascript --skip-test-unit
