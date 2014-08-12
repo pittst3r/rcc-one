@@ -11,9 +11,11 @@ You will need:
 3. Vagrant
 4. Git
 
-If you have any of the above, skip the installation instructions below.
+If you have all of the above, skip the installation instructions below.
 
-VirtualBox is open source virtualization software. It will run a virtual computer with pretty much any operating system that you want, enabling us to all have identical development environments regardless of the type of computer we have. Vagrant uses VirtualBox to make this process very easy; we will only need to interact with Vagrant, which will control VirtualBox for us. Vagrant will set up our virtual machine and make it simple to connect to it. The best part about Vagrant is that the files it uses to set up your virtual machine can be included with your application's source code, allowing other developers to have an environment appropriate for its development. We will only be installing git on your current machine so that we can get the project, including the Vagrant files. After that, you will only need to git from within the project's virtual machine.
+VirtualBox is open source [virtual machine](http://en.wikipedia.org/wiki/Virtual_machine) software. Vagrant is a tool that enables us to easily include virtual machine configurations with our projects, build and run the virtual machines with a single command, and do this all in a repeatable, cross-platform manner. By doing this we can all work on the project together in our identical virtual machines without running into problems unique to our own computers—everything should work the same for everybody.
+
+Git is [SCM](http://en.wikipedia.org/wiki/Software_configuration_management) software. Rather than simply saving our files and only having access to the latest version of our files, it gives us the ability to go back in time and see every revision to a file we've "committed" to git. Further more, it uses a concept called branching. We can create multiple branches, and branches on our branches, in order to maintain different states of our project. For example, you may want to work on two features at the same time, but one of those features will be done first and ready to deploy before the other. Git is very powerful and we will only scratch the surface during the course of this project. However, it is integral to any software project, whether you are the sole developer or one of thousands.
 
 #### VirtualBox
 
@@ -25,7 +27,7 @@ Vagrant is easy as well. Same drill; download the installer and install. Here's 
 
 #### Git
 
-And again with git. [Downloads](http://git-scm.com/downloads).
+And again with git. [Downloads](http://git-scm.com/downloads). We are installing git here simply to retrieve the project files, which include Vagrant files. After this, we will be using git from within our virtual machines to manage our progress through the project.
 
 ### Preparation
 
@@ -35,10 +37,10 @@ The first thing we should do is to let git know what our name and email address 
 
 ```shell
 git config --global user.name "Robbie Pitts"
-git config --global user.email robbie@sweatypitts.com
+git config --global user.email robbie@example.com
 ```
 
-I like to keep all my local repositories in a directory called `repos` in my home directory. You don't have to do this, but I recommend deciding on a way to organize the repos that you will accumulate over time. If you want to organize things the way I do, create your `repos` directory now.
+I like to keep all my local repositories in a directory called `repos` in my home directory (your home directory is your user account directory; on a Mac your home directory is the one that holds your Documents directory, Pictures directory, etc., on Windows your home directory is the one that holds My Documents, etc.). You don't have to do this, but I recommend deciding on a way to organize the repos that you will accumulate over time. If you want to organize things the way I do, create your `repos` directory now.
 
 In your terminal `cd` to the directory where you are keeping your repos. If you are doing things like me your command will look like this:
 
