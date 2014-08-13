@@ -15,7 +15,7 @@ If you have all of the above, skip the installation instructions below.
 
 VirtualBox is open source [virtual machine](http://en.wikipedia.org/wiki/Virtual_machine) software. Vagrant is a tool that enables us to easily include virtual machine configurations with our projects, build and run the virtual machines with a single command, and do this all in a repeatable, cross-platform manner. By doing this we can all work on the project together in our identical virtual machines without running into problems unique to our own computers—everything should work the same for everybody.
 
-Git is [SCM](http://en.wikipedia.org/wiki/Software_configuration_management) software. Rather than simply saving our files and only having access to the latest version of our files, it gives us the ability to go back in time and see every revision to a file we've "committed" to git. Further more, it uses a concept called branching. We can create multiple branches, and branches on our branches, in order to maintain different states of our project. For example, you may want to work on two features at the same time, but one of those features will be done first and ready to deploy before the other. Git is very powerful and we will only scratch the surface during the course of this project. However, it is integral to any software project, whether you are the sole developer or one of thousands.
+Git is [SCM](http://en.wikipedia.org/wiki/Software_configuration_management) software. Rather than simply saving our files and only having access to the latest version of our files, it gives us the ability to go back in time and see every revision to a file we've "committed" to git (take a look at the [git documentation](http://git-scm.com/doc) to learn more about commits, among other things). Further more, it uses a concept called branching. We can create multiple branches, and branches on our branches, in order to maintain different states of our project. For example, you may want to work on two features at the same time, but one of those features will be done first and ready to deploy before the other. Git is very powerful and we will only scratch the surface during the course of this project. However, it is integral to any software project, whether you are the sole developer or one of thousands.
 
 #### VirtualBox
 
@@ -27,7 +27,7 @@ Vagrant is easy as well. Same drill; download the installer and install. Here's 
 
 #### Git
 
-And again with git. [Downloads](http://git-scm.com/downloads). We are installing git here simply to retrieve the project files, which include Vagrant files. After this, we will be using git from within our virtual machines to manage our progress through the project.
+And again with git. [Downloads](http://git-scm.com/downloads). *If you are on a Mac, when you try to run the installer, you may get a message that says "git-2.0.1-intel-universal-snow-leopard.pkg can't be opened because it is from an unidentified developer"—this is okay—right click it instead, click "open", and you will be given the option to open it anyway.* We are installing git here simply to retrieve the project files, which include Vagrant files. After this, we will be using git from within our virtual machines to manage our progress through the project.
 
 ### Preparation
 
@@ -58,7 +58,7 @@ The following command will copy the project repo onto your computer, in your cur
 git clone https://github.com/sweatypitts/rcc-one.git
 ```
 
-Now `cd` into the repo:
+Now `cd` into the repo with the following command. Note that if you have RVM installed, it may whine at you that you don't have a certain version of Ruby installed. Ignore this. We will be doing development within the virtual machine which will already have the proper version of Ruby installed for you. The command:
 
 ```shell
 cd rcc-one
