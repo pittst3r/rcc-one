@@ -2,11 +2,12 @@
 
 ## Table of Contents
 
-1. [Setup](#setup)
-  a. [Prerequisites](#prerequisites)
-  b. [Preparation](#preparation)
-  c. [Start Vagrant](#start-vagrant)
-  d. [Prepare Our Workspace](#prepare-our-workspace)
+- [Table of Contents](#table-of-contents)
+- [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Preparation](#preparation)
+  - [Start Vagrant](#start-vagrant)
+  - [Prepare Our Workspace](#prepare-our-workspace)
 
 ## Setup
 
