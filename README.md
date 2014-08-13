@@ -2,6 +2,7 @@
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Preparation](#preparation)
