@@ -1,5 +1,13 @@
 # Richmond Computer Club Project \#1
 
+## Table of Contents
+
+- [Setup](#setup)
+  - [Prerequisites](#prerequisites)
+  - [Preparation](#preparation)
+  - [Start Vagrant](#start-vagrant)
+  - [Prepare Our Workspace](#prepare-our-workspace)
+
 ## Setup
 
 ### Prerequisites
